@@ -2,9 +2,9 @@
 
 use Reviewsio\DateRange;
 use Carbon\Carbon;
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 
-class SpansTest extends PHPUnit_Framework_TestCase
+class SpansTest extends \PHPUnit\Framework\TestCase
 {
     public function test_extreme_values_dont_span_time_period__wrong_start()
     {

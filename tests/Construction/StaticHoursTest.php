@@ -2,9 +2,9 @@
 
 use Reviewsio\DateRange;
 use Carbon\Carbon;
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 
-class StaticHoursTest extends PHPUnit_Framework_TestCase
+class StaticHoursTest extends \PHPUnit\Framework\TestCase
 {
     public function test_this_hour()
     {

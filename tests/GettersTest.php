@@ -8,7 +8,7 @@ use Carbon\Carbon;
 /**
  * Class GettersTest.
  */
-class GettersTest extends \PHPUnit_Framework_TestCase
+class GettersTest extends \PHPUnit\Framework\TestCase
 {
     public function test_getAfter_returns_a_new_carbon_instance_with_correct_value()
     {

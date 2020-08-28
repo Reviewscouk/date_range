@@ -4,12 +4,12 @@ namespace Reviewsio\Test;
 
 use Reviewsio\DateRange;
 use Carbon\Carbon;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ForHumansTest.
  */
-class ForHumansTest extends PHPUnit_Framework_TestCase
+class ForHumansTest extends \PHPUnit\Framework\TestCase
 {
     public function test_today()
     {

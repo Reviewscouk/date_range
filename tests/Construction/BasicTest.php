@@ -4,23 +4,24 @@ namespace Reviewsio\Test\Construction;
 
 use Reviewsio\DateRange;
 use Carbon\Carbon;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConstructorTest.
  */
-class BasicTest extends \PHPUnit_Framework_TestCase
+class BasicTest extends TestCase
 {
     /**
      * @inherit
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         Carbon::setTestNow();
     }
 
-    public function test_basic_construction()
+    public function testBasicConstruction()
     {
         new DateRange(
             Carbon::today()->subSecond(),
@@ -31,7 +32,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Reviewsio\Exceptions\TimezoneException
      */
-    public function test_timezone_exception_thrown_if_date_range_constructed_with_multiple_timezones()
+    public function testTimezoneExceptionThrownIfDateRangeConstructedWithMultipleTimezones()
     {
         $timezone_1 = 'GB';
         $timezone_2 = null;
@@ -45,12 +46,12 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException \Reviewsio\Exceptions\DateRangeException
      */
-    public function test_date_time_exception_thrown_if_date_range_constructed_without_dates()
+    public function testDateTimeExceptionThrownIfDateRangeConstructedWithoutDates()
     {
         new DateRange();
     }
 
-    public function test_timezone_is_initialised_with_both_dates_provided()
+    public function testTimezoneIsInitialisedWithBothDatesProvided()
     {
         $timezone = 'GB';
 
@@ -62,7 +63,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($timezone, $range->getTimezone()->getName());
     }
 
-    public function test_after_date_is_initialised_with_both_dates_provided()
+    public function testAfterDateIsInitialisedWithBothDatesProvided()
     {
         $range = new DateRange(
             $expected = Carbon::today()->subSecond(),
@@ -72,7 +73,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $range->getAfter());
     }
 
-    public function test_before_date_is_initialised_with_both_dates_provided()
+    public function testBeforeDateIsInitialisedWithBothDatesProvided()
     {
         $range = new DateRange(
             Carbon::today()->subSecond(),
@@ -82,42 +83,42 @@ class BasicTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $range->getBefore());
     }
 
-    public function test_timezone_is_initialised_without_after_date()
+    public function testTimezoneIsInitialisedWithoutAfterDate()
     {
         $range = new DateRange(null, Carbon::today($expected = 'GB')->endOfDay()->addSecond());
 
         $this->assertEquals($expected, $range->getTimezone()->getName());
     }
 
-    public function test_after_date_is_initialised_without_after_date()
+    public function testAfterDateIsInitialisedWithoutAfterDate()
     {
         $range = new DateRange($expected = null, Carbon::today()->endOfDay()->addSecond());
 
         $this->assertEquals($expected, $range->getAfter());
     }
 
-    public function test_before_date_is_initialised_without_after_date()
+    public function testBeforeDateIsInitialisedWithoutAfterDate()
     {
         $range = new DateRange(null, $expected = Carbon::today()->endOfDay()->addSecond());
 
         $this->assertEquals($expected, $range->getBefore());
     }
 
-    public function test_timezone_is_initialised_without_before_date()
+    public function testTimezoneIsInitialisedWithoutBeforeDate()
     {
         $range = new DateRange(Carbon::today($expected = 'GB')->subSecond(), null);
 
         $this->assertEquals($expected, $range->getTimezone()->getName());
     }
 
-    public function test_after_date_is_initialised_without_before_date()
+    public function testAfterDateIsInitialisedWithoutBeforeDate()
     {
         $range = new DateRange($expected = Carbon::today()->subSecond(), null);
 
         $this->assertEquals($expected, $range->getAfter());
     }
 
-    public function test_before_date_is_initialised_without_before_date()
+    public function testBeforeDateIsInitialisedWithoutBeforeDate()
     {
         $range = new DateRange(Carbon::today()->subSecond(), $expected = null);
 

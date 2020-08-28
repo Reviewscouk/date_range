@@ -2,9 +2,9 @@
 
 use Reviewsio\DateRange;
 use Carbon\Carbon;
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 
-class StaticMonthsTest extends PHPUnit_Framework_TestCase
+class StaticMonthsTest extends \PHPUnit\Framework\TestCase
 {
     public function test_this_month()
     {

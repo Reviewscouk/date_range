@@ -2,7 +2,7 @@
 
 use Reviewsio\DateRange;
 
-class HourOffsetsTest extends PHPUnit_Framework_TestCase
+class HourOffsetsTest extends \PHPUnit\Framework\TestCase
 {
     public function test_positive_offset_of_hour()
     {
