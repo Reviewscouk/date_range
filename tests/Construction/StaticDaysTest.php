@@ -6,82 +6,82 @@ use \PHPUnit\Framework\TestCase;
 
 class StaticDaysTest extends \PHPUnit\Framework\TestCase
 {
-    public function test_today()
+    public function testToday()
     {
-        $range = DateRange::today($expected_timezone = 'UTC');
+        $range = DateRange::today($expectedTimezone = 'UTC');
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $expected_after = Carbon::now($expected_timezone)->startOfDay()->subSecond();
+        $expectedAfter = Carbon::now($expectedTimezone)->startOfDay()->subSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedAfter, 'after', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
 
-        $expected_before = Carbon::now($expected_timezone)->endOfDay()->addSecond();
+        $expectedBefore = Carbon::now($expectedTimezone)->endOfDay()->addSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'before', $range);
-        $this->assertAttributeEquals($expected_before, 'before', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertAttributeEquals($expectedBefore, 'before', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 
-    public function test_timezone_is_optional_for_today()
+    public function testTimezoneIsOptionalForToday()
     {
         $range = DateRange::today();
-        $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $expectedTimezone = 'GB';
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 
-    public function test_tomorrow()
+    public function testTomorrow()
     {
-        $range = DateRange::tomorrow($expected_timezone = 'UTC');
+        $range = DateRange::tomorrow($expectedTimezone = 'UTC');
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $tomorrow = Carbon::now($expected_timezone)->startOfDay()->addDay();
+        $tomorrow = Carbon::now($expectedTimezone)->startOfDay()->addDay();
 
-        $expected_after = $tomorrow->copy()->subSecond();
+        $expectedAfter = $tomorrow->copy()->subSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedAfter, 'after', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
 
-        $expected_before = $tomorrow->copy()->endOfDay()->addSecond();
+        $expectedBefore = $tomorrow->copy()->endOfDay()->addSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'before', $range);
-        $this->assertAttributeEquals($expected_before, 'before', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertAttributeEquals($expectedBefore, 'before', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 
-    public function test_timezone_is_optional_for_tomorrow()
+    public function testTimezoneIsOptionalForTomorrow()
     {
         $range = DateRange::tomorrow();
-        $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $expectedTimezone = 'GB';
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 
-    public function test_yesterday()
+    public function testYesterday()
     {
-        $range = DateRange::yesterday($expected_timezone = 'UTC');
+        $range = DateRange::yesterday($expectedTimezone = 'UTC');
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $yesterday = Carbon::now($expected_timezone)->startOfDay()->subDay();
+        $yesterday = Carbon::now($expectedTimezone)->startOfDay()->subDay();
 
-        $expected_after = $yesterday->copy()->subSecond();
+        $expectedAfter = $yesterday->copy()->subSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedAfter, 'after', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
 
-        $expected_before = $yesterday->copy()->endOfDay()->addSecond();
+        $expectedBefore = $yesterday->copy()->endOfDay()->addSecond();
         $this->assertAttributeInstanceOf(Carbon::class, 'before', $range);
-        $this->assertAttributeEquals($expected_before, 'before', $range);
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertAttributeEquals($expectedBefore, 'before', $range);
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 
-    public function test_timezone_is_optional_for_yesterday()
+    public function testTimezoneIsOptionalForYesterday()
     {
         $range = DateRange::yesterday();
-        $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $expectedTimezone = 'GB';
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getAfter());
+        $this->assertAttributeEquals($expectedTimezone, 'timezone', $range->getBefore());
     }
 }

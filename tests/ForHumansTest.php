@@ -11,103 +11,103 @@ use PHPUnit\Framework\TestCase;
  */
 class ForHumansTest extends \PHPUnit\Framework\TestCase
 {
-    public function test_today()
+    public function testToday()
     {
         $range = new DateRange(
             Carbon::today()->subSecond(),
             Carbon::today()->endOfDay()->addSecond()
         );
 
-        $expected_result = 'Today';
+        $expectedResult = 'Today';
 
-        $this->assertEquals($expected_result, $range->forHumans());
+        $this->assertEquals($expectedResult, $range->forHumans());
     }
 
-    public function test_tomorrow()
+    public function testTomorrow()
     {
         $range = new DateRange(
             Carbon::tomorrow('GB')->startOfDay()->subSecond(),
             Carbon::tomorrow('GB')->endOfDay()->addSecond()
         );
 
-        $expected_result = 'Tomorrow';
+        $expectedResult = 'Tomorrow';
 
-        $this->assertEquals($expected_result, $range->forHumans());
+        $this->assertEquals($expectedResult, $range->forHumans());
     }
 
-    public function test_yesterday()
+    public function testYesterday()
     {
         $range = new DateRange(
             Carbon::yesterday()->subSecond(),
             Carbon::yesterday()->endOfDay()->addSecond()
         );
 
-        $expected_result = 'Yesterday';
+        $expectedResult = 'Yesterday';
 
-        $this->assertEquals($expected_result, $range->forHumans());
+        $this->assertEquals($expectedResult, $range->forHumans());
     }
 
-    public function test_other_day_in_current_week()
+    public function testOtherDayInCurrentWeek()
     {
     }
 
-    public function test_other_day_in_last_week()
+    public function testOtherDayInLastWeek()
     {
     }
 
-    public function test_other_day_in_next_week()
+    public function testOtherDayInNextWeek()
     {
     }
 
-    public function test_other_day()
+    public function testOtherDay()
     {
     }
 
-    public function test_this_week()
+    public function testThisWeek()
     {
     }
 
-    public function test_next_week()
+    public function testNextWeek()
     {
     }
 
-    public function test_last_week()
+    public function testLastWeek()
     {
     }
 
-    public function test_other_week()
+    public function testOtherWeek()
     {
     }
 
-    public function test_this_month()
+    public function testThisMonth()
     {
     }
 
-    public function test_next_month()
+    public function testNextMonth()
     {
     }
 
-    public function test_last_month()
+    public function testLastMonth()
     {
     }
 
-    public function test_other_month()
+    public function testOtherMonth()
     {
     }
 
-    public function test_this_year()
+    public function testThisYear()
     {
     }
 
-    public function test_next_year()
+    public function testNextYear()
     {
     }
 
-    public function test_last_year()
+    public function testLastYear()
     {
     }
 
-    public function test_other_year()
+    public function testOtherYear()
     {
     }
 }
