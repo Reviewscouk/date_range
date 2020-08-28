@@ -5,5 +5,5 @@ A package for handling date ranges.
 ## Installation
 
 ```
-composer require "reviewsio/date-range
+composer require "reviewsio/date-range"
 ```
