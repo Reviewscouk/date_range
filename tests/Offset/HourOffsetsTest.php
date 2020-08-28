@@ -1,6 +1,6 @@
 <?php
 
-use _20TRIES\DateRange;
+use Reviewsio\DateRange;
 
 class HourOffsetsTest extends PHPUnit_Framework_TestCase
 {

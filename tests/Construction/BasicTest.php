@@ -1,8 +1,8 @@
 <?php
 
-namespace _20TRIES\Test\Construction;
+namespace Reviewsio\Test\Construction;
 
-use _20TRIES\DateRange;
+use Reviewsio\DateRange;
 use Carbon\Carbon;
 
 /**
@@ -29,7 +29,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \_20TRIES\Exceptions\TimezoneException
+     * @expectedException \Reviewsio\Exceptions\TimezoneException
      */
     public function test_timezone_exception_thrown_if_date_range_constructed_with_multiple_timezones()
     {
@@ -43,7 +43,7 @@ class BasicTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \_20TRIES\Exceptions\DateRangeException
+     * @expectedException \Reviewsio\Exceptions\DateRangeException
      */
     public function test_date_time_exception_thrown_if_date_range_constructed_without_dates()
     {

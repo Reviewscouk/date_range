@@ -1,6 +1,6 @@
 <?php
 
-namespace _20TRIES\Exceptions;
+namespace Reviewsio\Exceptions;
 
 /**
  * An exception concerning a timezone error.

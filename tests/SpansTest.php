@@ -1,6 +1,6 @@
-<?php namespace _20TRIES\Test;
+<?php namespace Reviewsio\Test;
 
-use _20TRIES\DateRange;
+use Reviewsio\DateRange;
 use Carbon\Carbon;
 use PHPUnit_Framework_TestCase;
 

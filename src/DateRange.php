@@ -1,9 +1,9 @@
 <?php
 
-namespace _20TRIES;
+namespace Reviewsio;
 
-use _20TRIES\Exceptions\DateRangeException;
-use _20TRIES\Exceptions\TimezoneException;
+use Reviewsio\Exceptions\DateRangeException;
+use Reviewsio\Exceptions\TimezoneException;
 use Carbon\Carbon;
 use InvalidArgumentException;
 
