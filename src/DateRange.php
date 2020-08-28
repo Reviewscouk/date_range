@@ -180,9 +180,7 @@ class DateRange
             }
 
             // Offset the date time according to the language used in the method call.
-            $date_time = $time_period === self::HOUR
-                ? $date_time->minute(0)->second(0)
-                : $date_time->{"startOf{$time_period}"}();
+            $date_time = $date_time->{"startOf{$time_period}"}();
 
             // Generate a date range.
             switch ($prefix) {
@@ -211,7 +209,7 @@ class DateRange
      */
     public static function between(Carbon $from, Carbon $to)
     {
-        return new static($from->subSecond(), $to->addSecond());
+        return new static($from->subMicrosecond(), $to->addMicrosecond());
     }
 
     /**
@@ -225,11 +223,6 @@ class DateRange
     {
         $time_period = self::parseTimePeriod($time_period);
         switch ($time_period) {
-            case self::HOUR:
-                return static::between(
-                    $date_time->copy()->minute(0)->second(0),
-                    $date_time->copy()->minute(59)->second(59)
-                );
             default:
                 return static::between(
                     $date_time->copy()->{"startOf{$time_period}"}(),
@@ -288,7 +281,7 @@ class DateRange
      */
     public function getFrom()
     {
-        return $this->getAfter()->addSecond();
+        return $this->getAfter()->addMicrosecond();
     }
 
     /**
@@ -298,7 +291,7 @@ class DateRange
      */
     public function start()
     {
-        return $this->getAfter()->addSecond();
+        return $this->getAfter()->addMicrosecond();
     }
 
     /**
@@ -321,7 +314,7 @@ class DateRange
      */
     public function getTo()
     {
-        return $this->getBefore()->subSecond();
+        return $this->getBefore()->subMicrosecond();
     }
 
     /**
@@ -331,7 +324,7 @@ class DateRange
      */
     public function end()
     {
-        return $this->getBefore()->subSecond();
+        return $this->getBefore()->subMicrosecond();
     }
 
     /**
@@ -757,7 +750,7 @@ class DateRange
      */
     public function invert()
     {
-        return new static($this->getBefore()->subSecond(), $this->getAfter()->addSecond());
+        return new static($this->getBefore()->subMicrosecond(), $this->getAfter()->addMicrosecond());
     }
 
     /**
@@ -782,14 +775,16 @@ class DateRange
     {
         // Return full date range
         if (is_null($this->getAfter())) {
-            return 'Before '.$this->getBefore()->subSecond()->format($date_format);
+            return 'Before '.$this->getBefore()->subMicrosecond()->format($date_format);
         }
 
         if (is_null($this->getBefore())) {
-            return 'After '.$this->getAfter()->subSecond()->format($date_format);
+            return 'After '.$this->getAfter()->subMicrosecond()->format($date_format);
         }
 
-        return $this->getAfter()->addSecond()->format($date_format).$glue.$this->getBefore()->subSecond()->format($date_format);
+        return $this->getAfter()->addMicrosecond()->format($date_format)
+        . $glue
+        . $this->getBefore()->subMicrosecond()->format($date_format);
     }
 
     /**
