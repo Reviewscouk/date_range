@@ -1,10 +1,10 @@
 {
-    "name": "20tries/date_range",
+    "name": "reviewsio/date-range",
     "description": "An package for handling date ranges.",
     "keywords": [
-        "date", "date_range", "range", "timeperiod", "carbon"
+        "date", "date_range", "date-range", "range", "timeperiod", "carbon"
     ],
-    "homepage": "https://github.com/20tries/date_range",
+    "homepage": "https://github.com/Reviewsio/date_range",
     "license": "MIT",
     "require": {
         "php" : ">=7.2",
