@@ -13,15 +13,14 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $expected_after = Carbon::now($expected_timezone)->minute(0)->second(0)->subSecond();
         $after = $range->getAfter();
-        $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
+        $this->assertInstanceOf(Carbon::class, $range->getAfter());
+        $this->assertEquals($expected_after, $range->getAfter());
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
         $expected_before = Carbon::now($expected_timezone)->endOfHour()->addMicrosecond();
         $before = $range->getBefore();
-        $this->assertAttributeEquals($expected_before, 'before', $range);
+        $this->assertEquals($expected_before, $range->getBefore());
         $this->assertEquals($expected_before, $before);
     }
 
@@ -29,8 +28,8 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
     {
         $range = DateRange::thisHour();
         $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertEquals($expected_timezone, $range->getAfter()->getTimezone());
+        $this->assertEquals($expected_timezone, $range->getBefore()->getTimezone());
     }
 
     public function test_next_hour()
@@ -41,13 +40,13 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
 
         $expected_after = Carbon::now($expected_timezone)->startOfHour()->addHour()->subMicrosecond();
         $after = $range->getAfter();
-        $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
+        $this->assertInstanceOf(Carbon::class, $range->getAfter());
+        $this->assertEquals($expected_after, $range->getAfter());
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
         $expected_before = Carbon::now($expected_timezone)->endOfHour()->addHour()->addMicrosecond();
         $before = $range->getBefore();
-        $this->assertAttributeEquals($expected_before, 'before', $range);
+        $this->assertEquals($expected_before, $range->getBefore());
         $this->assertEquals($expected_before, $before);
     }
 
@@ -55,8 +54,8 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
     {
         $range = DateRange::nextHour();
         $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertEquals($expected_timezone, $range->getAfter()->getTimezone());
+        $this->assertEquals($expected_timezone, $range->getBefore()->getTimezone());
     }
 
     public function test_last_hour()
@@ -67,13 +66,13 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
 
         $expected_after = Carbon::now($expected_timezone)->subHour()->startOfHour()->subMicrosecond();
         $after = $range->getAfter();
-        $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
-        $this->assertAttributeEquals($expected_after, 'after', $range);
+        $this->assertInstanceOf(Carbon::class, $range->getAfter());
+        $this->assertEquals($expected_after, $range->getAfter());
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
         $expected_before = Carbon::now($expected_timezone)->subHour()->endOfHour()->addMicrosecond();
         $before = $range->getBefore();
-        $this->assertAttributeEquals($expected_before, 'before', $range);
+        $this->assertEquals($expected_before, $range->getBefore());
         $this->assertEquals($expected_before, $before);
     }
 
@@ -81,7 +80,7 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
     {
         $range = DateRange::lastHour();
         $expected_timezone = 'GB';
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getAfter());
-        $this->assertAttributeEquals($expected_timezone, 'timezone', $range->getBefore());
+        $this->assertEquals($expected_timezone, $range->getAfter()->getTimezone());
+        $this->assertEquals($expected_timezone, $range->getBefore()->getTimezone());
     }
 }
