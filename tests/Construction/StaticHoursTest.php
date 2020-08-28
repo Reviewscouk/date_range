@@ -9,6 +9,7 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
     public function test_this_hour()
     {
         $range = DateRange::thisHour($expected_timezone = 'UTC');
+        $expected_after = Carbon::now($expected_timezone)->startOfHour()->subMicrosecond();
 
         $this->assertInstanceOf(DateRange::class, $range);
 
@@ -18,7 +19,7 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
         $this->assertAttributeEquals($expected_after, 'after', $range);
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
-        $expected_before = Carbon::now($expected_timezone)->minute(59)->second(59)->addSecond();
+        $expected_before = Carbon::now($expected_timezone)->endOfHour()->addMicrosecond();
         $before = $range->getBefore();
         $this->assertAttributeEquals($expected_before, 'before', $range);
         $this->assertEquals($expected_before, $before);
@@ -38,13 +39,13 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $expected_after = Carbon::now($expected_timezone)->addHour()->minute(0)->second(0)->subSecond();
+        $expected_after = Carbon::now($expected_timezone)->startOfHour()->addHour()->subMicrosecond();
         $after = $range->getAfter();
         $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
         $this->assertAttributeEquals($expected_after, 'after', $range);
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
-        $expected_before = Carbon::now($expected_timezone)->addHour()->minute(59)->second(59)->addSecond();
+        $expected_before = Carbon::now($expected_timezone)->endOfHour()->addHour()->addMicrosecond();
         $before = $range->getBefore();
         $this->assertAttributeEquals($expected_before, 'before', $range);
         $this->assertEquals($expected_before, $before);
@@ -64,13 +65,13 @@ class StaticHoursTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(DateRange::class, $range);
 
-        $expected_after = Carbon::now($expected_timezone)->subHour()->minute(0)->second(0)->subSecond();
+        $expected_after = Carbon::now($expected_timezone)->subHour()->startOfHour()->subMicrosecond();
         $after = $range->getAfter();
         $this->assertAttributeInstanceOf(Carbon::class, 'after', $range);
         $this->assertAttributeEquals($expected_after, 'after', $range);
         $this->assertEquals($expected_after->timezone, $after->timezone);
 
-        $expected_before = Carbon::now($expected_timezone)->subHour()->minute(59)->second(59)->addSecond();
+        $expected_before = Carbon::now($expected_timezone)->subHour()->endOfHour()->addMicrosecond();
         $before = $range->getBefore();
         $this->assertAttributeEquals($expected_before, 'before', $range);
         $this->assertEquals($expected_before, $before);
